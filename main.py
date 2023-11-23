@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
@@ -11,9 +12,9 @@ async def FIO():
 async def Data():
     return {"number": "89039192952", "email": "korney1404@gmail.com"}
 
-@app.get('/tools')
+@app.get('/tools', response_class = HTMLResponse)
 async def Tools():
-    return "Владеет языками программирования: C++, C#, Python, R, JavaScript"
+    return "Владею языками программирования: C++, C#, Python, R, JavaScript. <br /> Знаком со следующими средами разработки: Visual Studio и Jupyter Notebook"
 
 if __name__ == '__main__':
     uvicorn.run(app, host="127.0.0.1", port=8000)
